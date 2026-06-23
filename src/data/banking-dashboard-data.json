@@ -1,0 +1,108 @@
+{
+  "metadata": {
+    "dashboardTitle": "Banking Portfolio and Risk Overview",
+    "asOfDate": "2026-06-01",
+    "currency": "USD",
+    "period": "monthly",
+    "generatedFor": "Protogen Academy - Interactive Data Story"
+  },
+  "loanApprovalRates": {
+    "overall": [
+      { "month": "2025-01", "approvalRatePct": 66.2 },
+      { "month": "2025-02", "approvalRatePct": 67.1 },
+      { "month": "2025-03", "approvalRatePct": 65.8 },
+      { "month": "2025-04", "approvalRatePct": 68.4 },
+      { "month": "2025-05", "approvalRatePct": 69.0 },
+      { "month": "2025-06", "approvalRatePct": 70.3 },
+      { "month": "2025-07", "approvalRatePct": 69.6 },
+      { "month": "2025-08", "approvalRatePct": 71.2 },
+      { "month": "2025-09", "approvalRatePct": 70.1 },
+      { "month": "2025-10", "approvalRatePct": 72.0 },
+      { "month": "2025-11", "approvalRatePct": 71.4 },
+      { "month": "2025-12", "approvalRatePct": 72.8 },
+      { "month": "2026-01", "approvalRatePct": 73.2 },
+      { "month": "2026-02", "approvalRatePct": 72.5 },
+      { "month": "2026-03", "approvalRatePct": 74.1 },
+      { "month": "2026-04", "approvalRatePct": 73.0 },
+      { "month": "2026-05", "approvalRatePct": 74.6 },
+      { "month": "2026-06", "approvalRatePct": 75.1 }
+    ],
+    "byDemographics": {
+      "householdIncome": [
+        { "segment": "Below 50k", "approvalRatePct": 55.2 },
+        { "segment": "50k-99k", "approvalRatePct": 66.8 },
+        { "segment": "100k-149k", "approvalRatePct": 76.3 },
+        { "segment": "150k+", "approvalRatePct": 84.9 }
+      ],
+      "educationLevel": [
+        { "segment": "High School", "approvalRatePct": 61.3 },
+        { "segment": "Some College", "approvalRatePct": 67.5 },
+        { "segment": "Bachelor", "approvalRatePct": 74.2 },
+        { "segment": "Graduate", "approvalRatePct": 79.1 }
+      ],
+      "age": [
+        { "segment": "18-24", "approvalRatePct": 58.4 },
+        { "segment": "25-34", "approvalRatePct": 69.7 },
+        { "segment": "35-44", "approvalRatePct": 76.8 },
+        { "segment": "45-54", "approvalRatePct": 78.0 },
+        { "segment": "55-64", "approvalRatePct": 74.4 },
+        { "segment": "65+", "approvalRatePct": 68.9 }
+      ]
+    }
+  },
+  "portfolioPerformance": [
+    { "month": "2025-01", "portfolioValue": 182500000 },
+    { "month": "2025-02", "portfolioValue": 185800000 },
+    { "month": "2025-03", "portfolioValue": 184200000 },
+    { "month": "2025-04", "portfolioValue": 188900000 },
+    { "month": "2025-05", "portfolioValue": 192300000 },
+    { "month": "2025-06", "portfolioValue": 196700000 },
+    { "month": "2025-07", "portfolioValue": 194100000 },
+    { "month": "2025-08", "portfolioValue": 199400000 },
+    { "month": "2025-09", "portfolioValue": 201200000 },
+    { "month": "2025-10", "portfolioValue": 205900000 },
+    { "month": "2025-11", "portfolioValue": 203100000 },
+    { "month": "2025-12", "portfolioValue": 209800000 },
+    { "month": "2026-01", "portfolioValue": 212400000 },
+    { "month": "2026-02", "portfolioValue": 210900000 },
+    { "month": "2026-03", "portfolioValue": 216500000 },
+    { "month": "2026-04", "portfolioValue": 214700000 },
+    { "month": "2026-05", "portfolioValue": 220300000 },
+    { "month": "2026-06", "portfolioValue": 224600000 }
+  ],
+  "fraudPatterns": {
+    "monthlyIncidents": [
+      { "month": "2025-01", "incidents": 49, "lossAmount": 410000 },
+      { "month": "2025-02", "incidents": 53, "lossAmount": 445000 },
+      { "month": "2025-03", "incidents": 57, "lossAmount": 502000 },
+      { "month": "2025-04", "incidents": 51, "lossAmount": 468000 },
+      { "month": "2025-05", "incidents": 61, "lossAmount": 556000 },
+      { "month": "2025-06", "incidents": 64, "lossAmount": 598000 },
+      { "month": "2025-07", "incidents": 58, "lossAmount": 534000 },
+      { "month": "2025-08", "incidents": 66, "lossAmount": 622000 },
+      { "month": "2025-09", "incidents": 71, "lossAmount": 703000 },
+      { "month": "2025-10", "incidents": 63, "lossAmount": 615000 },
+      { "month": "2025-11", "incidents": 68, "lossAmount": 679000 },
+      { "month": "2025-12", "incidents": 75, "lossAmount": 742000 },
+      { "month": "2026-01", "incidents": 70, "lossAmount": 697000 },
+      { "month": "2026-02", "incidents": 73, "lossAmount": 731000 },
+      { "month": "2026-03", "incidents": 78, "lossAmount": 805000 },
+      { "month": "2026-04", "incidents": 72, "lossAmount": 746000 },
+      { "month": "2026-05", "incidents": 76, "lossAmount": 789000 },
+      { "month": "2026-06", "incidents": 81, "lossAmount": 848000 }
+    ],
+    "byType": [
+      { "type": "Account Takeover", "incidents": 302, "sharePct": 24.8 },
+      { "type": "Card Not Present", "incidents": 398, "sharePct": 32.6 },
+      { "type": "Synthetic Identity", "incidents": 211, "sharePct": 17.3 },
+      { "type": "Wire Transfer", "incidents": 154, "sharePct": 12.6 },
+      { "type": "Check Fraud", "incidents": 155, "sharePct": 12.7 }
+    ],
+    "byChannel": [
+      { "channel": "Digital", "incidents": 704, "avgLossPerIncident": 9800 },
+      { "channel": "Branch", "incidents": 171, "avgLossPerIncident": 6200 },
+      { "channel": "Call Center", "incidents": 201, "avgLossPerIncident": 7400 },
+      { "channel": "ATM", "incidents": 144, "avgLossPerIncident": 5300 }
+    ]
+  }
+}
