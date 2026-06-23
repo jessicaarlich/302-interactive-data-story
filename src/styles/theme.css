@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap");
+
+:root {
+  --bg-soft: #f5f7f2;
+  --ink: #1d2a2f;
+  --panel: #ffffff;
+  --line: #d6ddd2;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 82% 10%, rgba(210, 138, 26, 0.12), transparent 28%),
+    radial-gradient(circle at 10% 88%, rgba(45, 95, 152, 0.1), transparent 34%),
+    linear-gradient(145deg, #f8faf6 0%, #eef3ea 50%, #f7f8f4 100%);
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Fraunces", Georgia, serif;
+  letter-spacing: 0.02em;
+}
+
+.dashboard-shell {
+  min-height: 100vh;
+}
+
+.dashboard-nav {
+  border-right: 1px solid var(--line);
+  background: linear-gradient(180deg, #ffffff 0%, #f6f8f3 100%) !important;
+}
+
+.brand-block {
+  padding: 28px 24px 20px;
+}
+
+.brand-block h1 {
+  margin: 0;
+  font-size: 1.65rem;
+}
+
+.brand-block p {
+  margin: 4px 0 0;
+  color: #4a5f65;
+}
+
+.header-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 20px;
+  background: var(--panel);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.header-panel h2 {
+  margin: 0;
+  font-size: 1.55rem;
+}
+
+.header-panel p {
+  margin: 4px 0 0;
+  color: #4a5f65;
+}
+
+.metric-card,
+.chart-card {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  margin-bottom: 16px;
+  padding: 16px;
+  background: var(--panel);
+}
+
+.metric-card h3,
+.chart-card h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.metric {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.body-copy {
+  margin: 8px 0 0;
+  color: #33484f;
+  line-height: 1.55;
+}
+
+.alert-list {
+  background: transparent;
+}
+
+.chart-wrap {
+  height: 240px;
+}
+
+.reveal-card {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: riseIn 520ms ease forwards;
+}
+
+.delay-1 {
+  animation-delay: 90ms;
+}
+
+.delay-2 {
+  animation-delay: 180ms;
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 960px) {
+  .header-panel {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .chart-wrap {
+    height: 220px;
+  }
+}
