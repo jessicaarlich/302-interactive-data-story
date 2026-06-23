@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
+import { useDisplay } from "vuetify";
 import {
   ArcElement,
   BarElement,
@@ -33,6 +34,21 @@ type DashboardView = "loans" | "portfolio" | "fraud";
 
 const { data, loan, portfolio, fraud, helpers } = useDashboardData();
 const currentView = ref<DashboardView>("loans");
+const drawerOpen = ref(false);
+const { mdAndDown } = useDisplay();
+
+const isCompactLayout = computed(() => mdAndDown.value);
+
+const currentViewLabel = computed(
+  () => navItems.find((item) => item.value === currentView.value)?.label ?? "Dashboard"
+);
+
+const selectView = (view: DashboardView) => {
+  currentView.value = view;
+  if (isCompactLayout.value) {
+    drawerOpen.value = false;
+  }
+};
 
 const navItems: { label: string; value: DashboardView; icon: string }[] = [
   { label: "Loans", value: "loans", icon: "mdi-cash-multiple" },
@@ -241,11 +257,13 @@ const moneyAxisOptions = {
   <v-app>
     <v-layout class="dashboard-shell">
       <v-navigation-drawer
+        v-model="drawerOpen"
         :width="272"
         color="surface"
         class="dashboard-nav"
         elevation="2"
-        permanent
+        :permanent="!isCompactLayout"
+        :temporary="isCompactLayout"
       >
         <div class="brand-block">
           <h1>BankScope</h1>
@@ -260,12 +278,28 @@ const moneyAxisOptions = {
             :prepend-icon="item.icon"
             :title="item.label"
             rounded="lg"
-            @click="currentView = item.value"
+            @click="selectView(item.value)"
           />
         </v-list>
       </v-navigation-drawer>
 
       <v-main>
+        <v-app-bar
+          v-if="isCompactLayout"
+          color="surface"
+          density="comfortable"
+          elevation="1"
+          class="mobile-topbar"
+        >
+          <v-btn
+            icon="mdi-menu"
+            variant="text"
+            aria-label="Open navigation menu"
+            @click="drawerOpen = !drawerOpen"
+          />
+          <v-toolbar-title>{{ currentViewLabel }}</v-toolbar-title>
+        </v-app-bar>
+
         <v-container fluid class="pa-6">
           <section class="header-panel reveal-card">
             <div>
