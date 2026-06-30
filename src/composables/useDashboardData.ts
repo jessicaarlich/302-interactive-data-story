@@ -35,20 +35,55 @@ const buildSegmentPortfolio = (
   multiplierFloor: number,
   multiplierStep: number
 ) => {
-  return segments.map((segment, segmentIndex) => {
-    const multiplier = multiplierFloor + segmentIndex * multiplierStep;
+  const centerIndex = (segments.length - 1) / 2;
+
+  const rawBaseWeights = segments.map((segment, segmentIndex) => {
+    const approvalInfluence = segment.approvalRatePct / 100;
+    const positionInfluence = multiplierFloor + segmentIndex * multiplierStep;
+    const proximityToCenter = Math.abs(segmentIndex - centerIndex);
+    const concentrationPenalty = 1 - proximityToCenter * 0.06;
+    return Math.max(0.03, approvalInfluence * positionInfluence * concentrationPenalty);
+  });
+
+  const weightTotal = rawBaseWeights.reduce((sum, weight) => sum + weight, 0) || 1;
+  const baseWeights = rawBaseWeights.map((weight) => weight / weightTotal);
+
+  const monthlyValues = base.map((point, pointIndex) => {
+    const rawValues = segments.map((_, segmentIndex) => {
+      const trendTilt = (segmentIndex - centerIndex) * 0.0018 * pointIndex;
+      const seasonalWave =
+        Math.sin((pointIndex + segmentIndex * 1.7) / 2.8) * 0.03 +
+        Math.cos((pointIndex * 0.9 + segmentIndex) / 4.2) * 0.014;
+      const deterministicJitter =
+        Math.sin((pointIndex + 1) * (segmentIndex + 2) * 0.73) * 0.007;
+      const adjustedShare =
+        baseWeights[segmentIndex] * (1 + trendTilt + seasonalWave + deterministicJitter);
+
+      return Math.max(adjustedShare, 0.01);
+    });
+
+    const rawTotal = rawValues.reduce((sum, value) => sum + value, 0) || 1;
+    const scaled = rawValues.map((value) =>
+      Math.round((point.portfolioValue * value) / rawTotal)
+    );
+
+    const roundedTotal = scaled.reduce((sum, value) => sum + value, 0);
+    const roundingDiff = point.portfolioValue - roundedTotal;
+    scaled[scaled.length - 1] += roundingDiff;
+
     return {
-      segment: segment.segment,
-      values: base.map((point, pointIndex) => {
-        const wave = (pointIndex % 4) * 0.008;
-        const value = point.portfolioValue * (multiplier + wave);
-        return {
-          month: point.month,
-          value: Math.round(value)
-        };
-      })
+      month: point.month,
+      values: scaled
     };
   });
+
+  return segments.map((segment, segmentIndex) => ({
+    segment: segment.segment,
+    values: monthlyValues.map((monthPoint) => ({
+      month: monthPoint.month,
+      value: monthPoint.values[segmentIndex]
+    }))
+  }));
 };
 
 export const useDashboardData = () => {
