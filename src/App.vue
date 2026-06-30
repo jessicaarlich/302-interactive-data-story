@@ -257,7 +257,8 @@ const moneyAxisOptions = {
   <v-app>
     <v-layout class="dashboard-shell">
       <v-navigation-drawer
-        v-model="drawerOpen"
+        :model-value="!isCompactLayout || drawerOpen"
+        @update:model-value="drawerOpen = $event"
         :width="272"
         color="surface"
         class="dashboard-nav"
